@@ -17,7 +17,7 @@ public class BoardDAO {
 	}
 	static{
 		for(int k = 0 ; k < 5; k++){
-			boardList.add(new BoardVO(k,k+" 번쨰 제목",k+" 번째 내용","2014-11-12",k));
+			boardList.add(new BoardVO(k,k+" 번쨰 제목",k+" 번째 내용","2018-12-12",k));
 		}
 	}
 	
@@ -49,7 +49,7 @@ public class BoardDAO {
 		
 		for(int k = 0 ; k < boardList.size() ; k++){
 			if(boardList.get(k).getSeq() == seq){
-				boardList.set(k,board);
+				boardList.set(k, board);
 				
 				//아래 처럼 해도 되요
 				//boardList.get(k).setTitle(board.getTitle());

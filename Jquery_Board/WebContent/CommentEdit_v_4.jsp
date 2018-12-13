@@ -16,7 +16,6 @@
 		});
 	
 		function RowUpdateBoard(){
-			
 			$('#updateForm').on("submit",function(){
 				var param = $(this).serialize();
 				//console.log(param);
@@ -42,24 +41,21 @@
 			});
 		}
 		
-		
-		
 		function GetBoardList(){
 			//alert("호출");
 			//데이터 만드는 작업 (비동기)
 			$.ajax({
-				url : "CommentEditList.jsp" ,
+				url : "CommentEditList.jsp",
 				dataType : "JSON",
 				type : "POST" ,
 				success : function(data){
-					//console.log(data);
+					console.log(data);
 					$('#listView').empty();
-					$('#listView').data("data",data); //key "data" value Array객체
-					
+					$('#listView').data("data", data); //key "data" value Array객체
 					
 					//data -> json 형태의 ArrayObject
-					for(var k=0 ; k < data.length ; k++){
-						var tr="";
+					for(var k = 0; k < data.length; k++){
+						var tr = "";
 						tr += "<tr index='"+ (k) +"'>";
 						tr += "<td>" + data[k].seq + "</td>";
 						tr += "<td>" + data[k].title + "</td>";
@@ -69,23 +65,23 @@
 						tr += "</tr>";
 						
 						var trObj = $(tr); //trObj (json 객체로 만들기)
-						console.log(trObj);
+// 						console.log(trObj.text());
 						
 						trObj.addClass("over").on("click",function(){
 							//tr > click 하면 상세  출력 
 							
 							var index = $(this).attr("index");
-							//console.log(index);
+// 							console.log("index => " + index);
 							var data = $("#listView").data("data");
-							//console.log(data);
+// 							console.log(data);
 							var rowdata = data[index];
-							//console.log(data);
+// 							console.log(rowdata);
 							
 							
 							$('#detailView').find(":input").each(function(){
 								var name = $(this).prop("name"); //속성의 이름만 가져오기
 								//console.log(name);
-								var value =rowdata[name];
+								var value = rowdata[name];
 								//console.log(value);
 								if(value != undefined){
 									$(this).val(value);
